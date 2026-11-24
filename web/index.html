@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SplitVideo · 音视频切分工作台</title>
+<style>
+:root{--bg:#f5f6f8;--ink:#202b3c;--muted:#7a8494;--line:#e7eaf0;--blue:#4668eb}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.6 "Segoe UI","Microsoft YaHei",sans-serif}button,input,select{font:inherit}button{cursor:pointer;transition:.18s}button:hover{filter:brightness(.96)}button:disabled{opacity:.5;cursor:not-allowed}button:focus-visible,input:focus-visible{outline:3px solid #a8b9ff;outline-offset:2px}header{height:78px;background:white;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 5vw}.brand{display:flex;align-items:center;gap:12px;font-size:20px;font-weight:750;letter-spacing:-.5px}.mark{background:var(--blue);color:white;border-radius:12px;width:38px;height:38px;display:grid;place-items:center;font-size:26px}.tag{font-size:11px;color:var(--muted);font-weight:500;border-left:1px solid var(--line);padding-left:14px;margin-left:8px;letter-spacing:1px}.local{color:#538371;font-size:12px}.dot{display:inline-block;width:7px;height:7px;background:#63aa88;border-radius:50%;margin-right:7px}main{max-width:1180px;margin:42px auto;padding:0 26px}.eyebrow{color:var(--blue);font-size:11px;font-weight:700;letter-spacing:2px}h1{font-size:30px;letter-spacing:-1px;margin:7px 0}p{color:var(--muted);margin:0}.intro{margin-bottom:28px}.layout{display:grid;grid-template-columns:1.12fr 1fr;gap:24px;align-items:start}.card{background:white;border:1px solid var(--line);border-radius:16px;padding:26px;box-shadow:0 5px 20px #27376203}.heading{display:flex;align-items:center;gap:11px;margin-bottom:20px}h2{font-size:16px;margin:0}.num{font-size:11px;color:var(--blue);background:#edf1ff;border-radius:6px;padding:3px 7px}.section+.section{border-top:1px solid var(--line);margin-top:26px;padding-top:24px}.pick{border:1px dashed #bfcbee;background:#f8faff;border-radius:12px;padding:24px;text-align:center}.file-icon{margin:auto auto 9px;width:42px;height:44px;background:#e9efff;border-radius:10px;display:grid;place-items:center;color:var(--blue);font-size:23px}.pick strong{display:block;margin-bottom:4px}.pick p{font-size:12px;margin-bottom:16px}button{border:1px solid var(--line);background:white;color:var(--ink);border-radius:8px;padding:9px 16px;font-weight:600}.secondary{border-color:#cdd7fc;color:var(--blue)}input[type=text],input[type=number]{width:100%;border:1px solid #dfe4ed;border-radius:8px;padding:10px 12px;color:var(--ink);background:white;min-width:0}label.field{display:block;margin:15px 0 7px;font-size:12px;color:#606e82}.row{display:flex;gap:10px;align-items:center}.row input{flex:1}.row button{flex-shrink:0}.choices{display:grid;grid-template-columns:1fr 1fr;gap:10px}.choice{display:flex;gap:10px;align-items:center;border:1px solid var(--line);border-radius:10px;padding:13px;cursor:pointer}.choice:has(input:checked){border-color:#8199fb;background:#f5f7ff}.choice input{accent-color:var(--blue)}.choice b{font-size:13px;display:block}.choice small{font-size:11px;color:var(--muted)}.tabs{display:flex;background:#f2f4f8;padding:4px;border-radius:9px;margin:18px 0}.tabs label{width:50%;text-align:center;cursor:pointer;border-radius:6px;padding:7px}.tabs label:has(input:checked){background:white;box-shadow:0 2px 5px #00000008;color:var(--blue)}.tabs input{position:absolute;opacity:0;width:1px}.tabs label:focus-within{outline:2px solid #a8b9ff}.fields{display:grid;grid-template-columns:1fr 1fr;gap:16px}.unit{position:relative}.unit input{padding-right:40px}.unit span{position:absolute;right:13px;top:10px;color:var(--muted)}.hint{font-size:12px;margin-top:12px}.primary{width:100%;margin-top:24px;background:var(--blue);border:0;color:white;padding:13px;font-size:14px;box-shadow:0 5px 12px #4668eb22}.footnote{text-align:center;font-size:11px;color:#99a0ac;margin-top:10px}.status-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:28px}.pill{background:#f0f3f8;color:#7b8495;font-size:11px;padding:4px 10px;border-radius:20px}.meter{display:flex;justify-content:space-between;align-items:end}.meter strong{font-size:38px;line-height:1.2;letter-spacing:-1.5px}.meter span{font-size:12px;color:var(--muted)}progress{width:100%;height:7px;appearance:none;border:0;margin:18px 0 12px}progress::-webkit-progress-bar{background:#eef1f6;border-radius:10px}progress::-webkit-progress-value{background:var(--blue);border-radius:10px}progress::-moz-progress-bar{background:var(--blue)}.empty{padding:48px 12px;text-align:center;border:1px dashed var(--line);border-radius:12px;margin-top:22px}.empty .symbol{font-size:32px;color:#b7c4e6;margin-bottom:12px}.empty b{font-size:13px;font-weight:500}.empty p{font-size:12px;margin-top:6px}.result-list{max-height:310px;overflow:auto;margin-top:18px}.result{display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--line);font-size:12px}.result span{color:var(--muted)}.note{margin-top:20px;padding:20px 22px;background:#edf1f9;border-radius:12px}.note h3{font-size:13px;margin:0 0 8px}.note p{font-size:12px;line-height:1.9;color:#778397}.notice{padding:12px 16px;background:#fff6e5;border:1px solid #f4dfb8;color:#98702b;border-radius:10px;margin-bottom:20px;font-size:12px}.error{color:#b64747;background:#fff0f0;padding:12px;border-radius:8px;margin-top:14px;overflow-wrap:anywhere}.folder{font-size:12px;overflow-wrap:anywhere;margin-top:16px}footer{display:flex;justify-content:space-between;margin:26px 0;color:#9aa2af;font-size:11px}[hidden]{display:none!important}@media(max-width:800px){.layout{grid-template-columns:1fr}main{margin-top:25px;padding:0 16px}.card{padding:20px}.tag{display:none}header{padding:0 20px}h1{font-size:26px}}
+.header-actions{display:flex;align-items:center;gap:20px}.header-actions button{white-space:nowrap}@media(max-width:600px){header{height:auto;min-height:78px;padding:16px;gap:12px;flex-wrap:wrap}.header-actions{margin-left:auto;gap:10px}.header-actions .local{display:none}}
+.mode-choices { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+#audio-format {
+  width: 100%; padding: 10px 12px; color: var(--ink); background: white;
+  border: 1px solid #dfe4ed; border-radius: 8px;
+}
+#audio-format:focus-visible { outline: 3px solid #a8b9ff; outline-offset: 2px; }
+.tabs label { flex: 1; width: auto; }
+.range-label { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; }
+.range-label button { padding: 3px 8px; font-size: 12px; }
+#ranges { width: 100%; resize: vertical; padding: 10px 12px; border: 1px solid #dfe4ed;
+  border-radius: 8px; color: var(--ink); font: inherit; font-variant-numeric: tabular-nums; }
+#ranges:focus-visible { outline: 3px solid #a8b9ff; outline-offset: 2px; }
+#range-preview { max-height: 220px; overflow: auto; margin-top: 8px; }
+#range-preview table { width: 100%; border-collapse: collapse; font-size: 12px; font-variant-numeric: tabular-nums; }
+#range-preview th, #range-preview td { text-align: right; padding: 5px 8px; border-bottom: 1px solid var(--line); }
+#range-preview th { position: sticky; top: 0; background: #f5f7fb; }
+#range-summary[role=alert] { color: #ab3939; }
+@media (max-width: 560px) { .mode-choices { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<header><div class="brand"><span class="mark">✂</span>SplitVideo<span class="tag">音视频切分工作台</span></div><div class="header-actions"><div class="local"><span class="dot"></span>本地处理 · 文件无需上传</div><button type="button" id="reset" class="secondary">重置，开始新任务</button></div></header>
+<main><div class="intro"><h1>音频与视频切分</h1><p>指定起止时间，或按固定、随机时长切分录音、音乐和视频。</p></div>
+<div id="notice" class="notice" hidden></div>
+<div class="layout"><form id="form" class="card"><fieldset id="settings" style="border:0;padding:0;margin:0;min-width:0">
+<section class="section"><div class="heading"><span class="num">01</span><h2>选择源文件</h2></div>
+<div class="pick"><div class="file-icon">▷</div><strong id="filename">选择音频或视频文件</strong><p>支持 MP3、WAV、M4A、FLAC、MP4、MOV 等格式</p><button type="button" class="secondary" id="browse">＋ 选择本地文件</button></div>
+<label class="field" for="source">或直接粘贴完整文件路径</label><input id="source" type="text" placeholder="例如 D:\音频\会议录音.wav" required></section>
+<section class="section"><div class="heading"><span class="num">02</span><h2>设置切分方式</h2></div>
+<div class="choices mode-choices">
+  <label class="choice"><input type="radio" name="mode" value="auto" checked><span><b>自动识别</b><small>按源文件类型切分</small></span></label>
+  <label class="choice"><input type="radio" name="mode" value="audio"><span><b>切分音频</b><small>也可提取视频音轨</small></span></label>
+  <label class="choice"><input type="radio" name="mode" value="video"><span><b>切分视频</b><small>输出 MP4 视频片段</small></span></label>
+</div>
+<div id="audio-format-field">
+  <label class="field" for="audio-format">音频输出格式</label>
+  <select id="audio-format" name="audio_format" aria-describedby="audio-format-hint">
+    <option value="source" selected>跟随原素材（默认）</option>
+    <option value="mp3">MP3</option>
+    <option value="wav">WAV（24 位 PCM）</option>
+    <option value="flac">FLAC（无损压缩）</option>
+    <option value="m4a">M4A（AAC）</option>
+    <option value="ogg">OGG（Vorbis）</option>
+  </select>
+  <p id="audio-format-hint" class="hint">自动识别为音频时使用此格式。</p>
+</div>
+<div class="tabs"><label><input type="radio" name="timing" value="range" checked>随机时长范围</label><label><input type="radio" name="timing" value="fixed">固定每段时长</label><label><input type="radio" name="timing" value="custom">自定义时间段</label></div>
+<div id="range" class="fields"><div><label class="field" for="minimum">最短时长</label><div class="unit"><input type="number" id="minimum" min="0.001" step="any" value="30" required><span>秒</span></div></div><div><label class="field" for="maximum">最长时长</label><div class="unit"><input type="number" id="maximum" min="0.001" step="any" value="60" required><span>秒</span></div></div></div>
+<div id="fixed" hidden><label class="field" for="duration">每段时长</label><div class="unit"><input type="number" id="duration" min="0.001" step="any" value="60" disabled required><span>秒</span></div></div>
+<div id="custom" hidden>
+  <div class="range-label">
+    <label class="field" for="ranges">截取位置（秒），每行一段</label>
+    <button type="button" class="secondary" id="range-example">填入 10 段示例</button>
+  </div>
+  <textarea id="ranges" rows="5" placeholder="0-22&#10;22-40&#10;40-58" aria-describedby="range-help range-summary" spellcheck="false" disabled required></textarea>
+  <p id="range-help" class="hint">可粘贴带时长列的时间表。按行依次导出，每行的起止秒数都从原素材开头算起。</p>
+  <p id="range-summary" class="hint" aria-live="polite"></p>
+  <div id="range-preview" hidden><table aria-label="时间段预览">
+    <thead><tr><th>片段</th><th>开始（秒）</th><th>结束（秒）</th><th>时长（秒）</th></tr></thead>
+    <tbody></tbody>
+  </table></div>
+</div>
+<p id="timing-hint" class="hint">每段时长在范围内随机分配，自动协调最后一段。</p></section>
+<section class="section"><div class="heading"><span class="num">03</span><h2>保存位置</h2></div><div class="row"><input id="output" aria-label="保存目录" type="text" placeholder="默认：项目根目录下的 data 文件夹"><button type="button" id="choose-output">浏览</button></div><p class="hint">每次切分自动创建独立文件夹，原始文件保持完整。</p></section></fieldset>
+<button class="primary" id="start" type="submit">开始切分 →</button><div class="footnote">重置会清空页面记录，已保存文件保留。处理期间请保持启动窗口打开。</div><div id="error" class="error" role="alert" hidden></div></form>
+<aside><div class="card"><div class="status-head"><h2>切分进度</h2><span class="pill" id="status">等待开始</span></div><div class="meter"><strong id="percent">0<span>%</span></strong><span id="count">尚未创建任务</span></div><progress id="progress" max="100" value="0" aria-label="切分进度"></progress><p class="hint" id="progress-hint" aria-live="polite">准备好后，点击「开始切分」。</p><div class="empty" id="empty"><div class="symbol">▥</div><b>你的片段将在这里呈现</b><p>完成后可直接打开文件夹查看所有结果</p></div><div class="result-list" id="results"></div><p id="folder" class="folder" hidden></p><button type="button" id="open" class="secondary" style="width:100%;margin-top:16px" hidden>打开结果文件夹 ↗</button></div><div class="note"><h3>切分小贴士</h3><p>范围模式会尽量让所有片段落在指定区间内；无法完整分配时会提示调整。固定模式会保留较短的末段。实际时长可能因视频帧率或音频编码略有差异。</p></div></aside></div><footer><span>SplitVideo / 简单、专注的本地切分工具</span><span>视频 · 音频 · 自由切分</span></footer></main>
+<script>
+const $=id=>document.getElementById(id);const token=location.hash.slice(1)||sessionStorage.getItem('split-token')||'';sessionStorage.setItem('split-token',token);history.replaceState(null,'',location.pathname);
+async function api(path,data){const response=await fetch('/api/'+path,{method:data===undefined?'GET':'POST',headers:{'X-App-Token':token,'Content-Type':'application/json'},body:data===undefined?undefined:JSON.stringify(data)});const result=await response.json();if(!response.ok)throw new Error(result.error||'请求失败');return result}
+function error(message){$('error').textContent=message;$('error').hidden=!message}
+function filename(){$('filename').textContent=$('source').value.trim().replaceAll('"','').split(/[\\/]/).pop()||'选择音频或视频文件'}$('source').addEventListener('input',filename);
+async function choose(kind,button,target){button.disabled=true;error('');try{const result=await api('choose',{kind});if(result.path){$(target).value=result.path;filename()}}catch(e){error(e.message)}finally{button.disabled=false}}
+$('browse').onclick=()=>choose('file',$('browse'),'source');$('choose-output').onclick=()=>choose('folder',$('choose-output'),'output');
+const seconds = new Intl.NumberFormat('zh-CN', { maximumFractionDigits: 9, useGrouping: false });
+let previewTimer;
+function previewRanges() {
+  clearTimeout(previewTimer);
+  const input = $('ranges');
+  const text = input.value;
+  const summary = $('range-summary');
+  input.setCustomValidity('');
+  input.removeAttribute('aria-invalid');
+  summary.removeAttribute('role');
+  summary.textContent = '';
+  $('range-preview').hidden = true;
+  $('range-example').hidden = Boolean(text.trim());
+  if (input.disabled || !text.trim()) return;
+  previewTimer = setTimeout(async () => {
+    try {
+      const { ranges } = await api('preview-ranges', { ranges: text });
+      if (text !== input.value || input.disabled) return;
+      let total = 0;
+      const rows = ranges.map(([start, end], index) => {
+        const length = end - start;
+        total += length;
+        const row = document.createElement('tr');
+        for (const value of [index + 1, start, end, length]) {
+          const cell = row.insertCell();
+          cell.textContent = seconds.format(value);
+        }
+        return row;
+      });
+      document.querySelector('#range-preview tbody').replaceChildren(...rows);
+      summary.textContent = `共 ${ranges.length} 段，合计 ${seconds.format(total)} 秒`;
+      $('range-preview').hidden = false;
+    } catch (e) {
+      if (text !== input.value || input.disabled) return;
+      input.setCustomValidity(e.message);
+      input.setAttribute('aria-invalid', 'true');
+      summary.setAttribute('role', 'alert');
+      summary.textContent = e.message;
+    }
+  }, 180);
+}
+$('ranges').addEventListener('input', previewRanges);
+$('range-example').onclick = () => {
+  $('ranges').value = ['0-22', '22-40', '40-58', '58-79', '79-96', '96-120',
+    '120-140', '140-165', '165-183', '183-204'].join('\n');
+  previewRanges();
+  $('ranges').focus();
+};
+function syncTiming() {
+  const timing = document.querySelector('[name=timing]:checked').value;
+  for (const mode of ['fixed', 'range', 'custom']) $(mode).hidden = timing !== mode;
+  $('duration').disabled = timing !== 'fixed';
+  $('minimum').disabled = $('maximum').disabled = timing !== 'range';
+  $('ranges').disabled = timing !== 'custom';
+  $('timing-hint').hidden = timing === 'custom';
+  $('timing-hint').textContent = timing === 'fixed'
+    ? '按固定时长切分，最后一段保留剩余内容。'
+    : '每段时长在范围内随机分配，自动协调最后一段。';
+  previewRanges();
+}
+document.querySelectorAll('[name=timing]').forEach(el=>el.onchange=syncTiming);
+syncTiming();
+function syncAudioFormat() {
+  const mode = document.querySelector('[name=mode]:checked').value;
+  $('audio-format-field').hidden = mode === 'video';
+  $('audio-format').disabled = mode === 'video';
+  $('audio-format-hint').hidden = mode !== 'auto';
+}
+document.querySelectorAll('[name=mode]').forEach(el => el.addEventListener('change', syncAudioFormat));
+syncAudioFormat();
+let submitting=false, resetting=false, revision=0;
+$('form').onsubmit = async event => {
+  event.preventDefault();
+  error('');
+  submitting = true;
+  revision++;
+  $('start').disabled = $('reset').disabled = true;
+  try {
+    await api('start', {
+      source: $('source').value, output: $('output').value,
+      mode: document.querySelector('[name=mode]:checked').value,
+      audio_format: $('audio-format').disabled ? undefined : $('audio-format').value,
+      timing: document.querySelector('[name=timing]:checked').value,
+      ranges: $('ranges').disabled ? undefined : $('ranges').value,
+      duration: $('duration').value, minimum: $('minimum').value, maximum: $('maximum').value
+    });
+  } catch (e) {
+    error(e.message);
+  } finally {
+    submitting = false;
+    await refresh();
+  }
+};
+$('reset').onclick=async()=>{resetting=true;revision++;$('reset').disabled=true;$('start').disabled=true;error('');try{await api('reset',{});$('form').reset();syncAudioFormat();syncTiming();filename();error('')}catch(e){error(e.message)}finally{resetting=false;await refresh()}};
+$('open').onclick=async()=>{try{await api('open',{})}catch(e){error(e.message)}};
+async function refresh(){const current=revision;try{const state=await api('status');if(current!==revision||resetting)return;const running=state.status==='running';$('settings').disabled=running||submitting; $('reset').disabled=running||submitting||resetting;$('start').disabled=running||submitting||resetting||state.missing.length>0;$('start').textContent=running?'正在切分，请稍候…':'开始切分 →';$('notice').hidden=!state.missing.length;$('notice').textContent='尚未检测到 '+state.missing.join('、')+'。请按 README.md 安装 FFmpeg 后重新启动。';$('status').textContent=({idle:'等待开始',running:'处理中',complete:'已完成',error:'处理失败'})[state.status];const percent=state.total?Math.floor(state.completed/state.total*100):0;$('percent').replaceChildren(document.createTextNode(percent),Object.assign(document.createElement('span'),{textContent:'%'}));$('progress').value=percent;$('count').textContent=state.total?`${state.completed} / ${state.total} 段已完成`:'尚未生成片段';$('progress-hint').textContent=running?'正在本地处理，进度按已完成片段更新。':state.status==='complete'?'全部切分完成，结果已保存。':state.status==='error'?'任务已停止，已完成片段仍然保留。':'准备好后，点击「开始切分」。';$('empty').hidden=state.files.length>0;$('results').replaceChildren(...state.files.map(file=>{const row=document.createElement('div');row.className='result';const name=document.createElement('b');name.textContent='▷  '+file.file;const length=document.createElement('span');length.textContent=file.duration_seconds.toFixed(2)+' 秒';row.append(name,length);return row}));$('folder').hidden=!state.folder;$('folder').textContent=state.folder;$('open').hidden=!state.folder;if(state.error)error(state.error)}catch(e){if(current!==revision||resetting)return;$('reset').disabled=true;$('notice').hidden=false;$('notice').textContent='无法连接本地服务，请保持启动窗口打开，或重新运行 startSplitVideo.bat。';$('start').disabled=true}}
+async function poll(){await refresh();setTimeout(poll,1000)}poll();
+</script></body></html>
